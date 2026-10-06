@@ -1,0 +1,74 @@
+.ore-expander {
+  overflow: hidden;
+  border: 1px solid var(--ore-border-color);
+  border-radius: var(--ore-border-radius-md);
+  background-color: var(--ore-card-bg-color);
+  color: var(--ore-card-fg-color);
+  font-family: var(--ore-font-sans);
+
+  &__header {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    width: 100%;
+    padding: 10px 12px;
+    border: none;
+    background-color: transparent;
+    color: inherit;
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+    transition: background-color var(--ore-transition-duration) ease;
+
+    &:hover {
+      background-color: var(--ore-fill-hover);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--ore-accent-color);
+      outline-offset: -2px;
+    }
+  }
+
+  &__icon {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  &__title {
+    flex: 1 1 auto;
+    font-weight: 600;
+  }
+
+  &__chevron {
+    display: inline-flex;
+    align-items: center;
+    opacity: 0.6;
+    transform: rotate(-90deg);
+    transition: transform var(--ore-transition-duration) var(--ore-ease-in-out);
+
+    &--open {
+      transform: rotate(0deg);
+    }
+  }
+
+  &__region {
+    padding: 10px 12px;
+    border-top: 1px solid var(--ore-border-color);
+    animation: ore-expander-in var(--ore-animation-duration) var(--ore-ease-out-cubic);
+  }
+
+  &__content {
+    font-size: 13px;
+  }
+}
+
+@keyframes ore-expander-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}

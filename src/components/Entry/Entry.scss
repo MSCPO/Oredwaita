@@ -1,0 +1,86 @@
+// Entry (single-line, GtkEntry)
+.ore-entry {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 8px 12px;
+  font-family: var(--ore-font-sans);
+  font-size: 14px;
+  color: var(--ore-view-fg-color);
+  caret-color: var(--ore-accent-color);
+  background-color: var(--ore-view-bg-color);
+  border: 1px solid var(--ore-border-color);
+  border-radius: var(--ore-border-radius-sm);
+  outline: none;
+  transition:
+    border-color var(--ore-transition-duration) var(--ore-ease-out-cubic),
+    box-shadow var(--ore-transition-duration) var(--ore-ease-out-cubic);
+
+  &::placeholder {
+    color: var(--ore-view-fg-color);
+    opacity: 0.5;
+  }
+
+  &:hover:not(:disabled) {
+    border-color: var(--ore-border-strong);
+  }
+
+  &:focus {
+    border-color: var(--ore-accent-bg-color);
+    box-shadow: 0 0 0 2px var(--ore-fill-selected);
+  }
+
+  &:read-only {
+    opacity: 0.7;
+  }
+
+  &:disabled,
+  &--disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+// TextArea (multi-line, GtkTextView)
+.ore-text-area {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 96px;
+  padding: 8px 12px;
+  font-family: var(--ore-font-sans);
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--ore-view-fg-color);
+  caret-color: var(--ore-accent-color);
+  background-color: var(--ore-view-bg-color);
+  border: 1px solid var(--ore-border-color);
+  border-radius: var(--ore-border-radius-sm);
+  outline: none;
+  resize: vertical;
+  transition:
+    border-color var(--ore-transition-duration) var(--ore-ease-out-cubic),
+    box-shadow var(--ore-transition-duration) var(--ore-ease-out-cubic);
+
+  &::placeholder {
+    color: var(--ore-view-fg-color);
+    opacity: 0.5;
+  }
+
+  &:hover:not(:disabled) {
+    border-color: var(--ore-border-strong);
+  }
+
+  &:focus {
+    border-color: var(--ore-accent-bg-color);
+    box-shadow: 0 0 0 2px var(--ore-fill-selected);
+  }
+
+  &:read-only {
+    opacity: 0.7;
+  }
+
+  &:disabled,
+  &--disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}

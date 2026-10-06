@@ -1,0 +1,90 @@
+.ore-date-picker {
+  display: inline-block;
+  font-family: var(--ore-font-sans);
+
+  &__trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 160px;
+    max-width: 320px;
+    padding: 6px 10px;
+    border: 1px solid var(--ore-border-color);
+    border-radius: var(--ore-border-radius-md);
+    background-color: var(--ore-card-bg-color);
+    color: var(--ore-window-fg-color);
+    font-family: var(--ore-font-sans);
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color var(--ore-transition-duration) ease;
+
+    &:hover {
+      background-color: var(--ore-fill-hover);
+    }
+
+    &:active {
+      background-color: var(--ore-fill-active);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--ore-accent-bg-color);
+      outline-offset: 1px;
+    }
+
+    &--open {
+      background-color: var(--ore-fill-active);
+    }
+
+    &--placeholder .ore-date-picker__value {
+      opacity: 0.55;
+    }
+
+    &:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+    }
+  }
+
+  &__icon {
+    display: inline-flex;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    color: var(--ore-window-fg-color);
+    opacity: 0.7;
+  }
+
+  &__value {
+    flex: 1 1 auto;
+    overflow: hidden;
+    text-align: left;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__popup {
+    /* Positioning (fixed top/left) comes inline from useAnchoredPosition. */
+    position: fixed;
+    z-index: 500;
+    padding: 6px;
+    border: 1px solid var(--ore-border-color);
+    border-radius: var(--ore-border-radius-md);
+    background-color: var(--ore-popover-bg-color);
+    color: var(--ore-popover-fg-color);
+    box-shadow: var(--ore-shadow-hard-sm);
+    font-family: var(--ore-font-sans);
+    animation: ore-date-picker-in 0.15s var(--ore-ease-out-cubic);
+  }
+}
+
+@keyframes ore-date-picker-in {
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

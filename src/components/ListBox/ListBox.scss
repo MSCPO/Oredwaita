@@ -1,0 +1,56 @@
+.ore-list-box {
+  display: flex;
+  flex-direction: column;
+  padding: 4px;
+  border: 1px solid var(--ore-border-color);
+  border-radius: var(--ore-border-radius-md);
+  background-color: var(--ore-card-bg-color);
+  overflow: hidden;
+}
+
+.ore-list-box__item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: var(--ore-border-radius-sm);
+  color: var(--ore-window-fg-color);
+  cursor: pointer;
+  outline: none;
+  user-select: none;
+  transition: background-color var(--ore-transition-duration) var(--ore-ease-out-cubic);
+
+  &:hover:not(&--disabled):not(&--selected) {
+    background-color: var(--ore-fill-hover);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--ore-accent-color);
+    outline-offset: -2px;
+  }
+
+  &--selected {
+    background-color: var(--ore-fill-selected);
+    color: var(--ore-accent-color);
+
+    &:hover:not(&--disabled) {
+      background-color: var(--ore-fill-active);
+    }
+  }
+
+  &--disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+}
+
+.ore-list-box__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.ore-list-box__label {
+  flex: 1 1 auto;
+}

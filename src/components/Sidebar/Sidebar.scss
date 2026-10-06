@@ -111,12 +111,16 @@
   }
 
   &--selected {
-    background-color: var(--ore-accent-bg-color);
-    color: var(--ore-accent-fg-color);
+    background-color: var(--ore-fill-selected);
+    color: var(--ore-accent-color);
+
+    &:hover:not(:disabled),
+    &:active:not(:disabled) {
+      background-color: var(--ore-fill-active);
+    }
 
     .ore-sidebar-item__badge {
-      background-color: var(--ore-white-a25);
-      color: var(--ore-white);
+      background-color: var(--ore-fill-active);
     }
   }
 

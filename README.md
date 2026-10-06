@@ -7,20 +7,20 @@
 [![Rollup](https://img.shields.io/badge/Rollup-4.x-EC4A3F?logo=rollup.js)](https://rollup.io/)
 [![Storybook](https://img.shields.io/badge/Storybook-10.x-FF4785?logo=storybook)](https://storybook.js.org/)
 
-OreDwaita 是一套在设计上基于Adwaita,遵循 GNOME HIG 设计语言的 React 组件库。
+OreDwaita 是一套在设计上将 MSCPOreSwiss 融入 Adwaita 设计语言的 React 组件库。
 
 ## ✨ 特性
 
-- **⚛️ React 19 + TypeScript 5** 全类型组件（50+ 导出，29 个模块）
+- **⚛️ React 19 + TypeScript 5** 全类型组件（80+ 导出，42 个模块）
 - **🎨 语义化设计 Token**：CSS 自定义属性（`--ore-*`）分层组织——调色板 → 语义层 → light/dark 主题，暗色模式为藏青色调
 - **🧱 GNOME HIG 控件解剖**：9px 按钮圆角、48px HeaderBar、开关/行控件/对话框均按 HIG 结构实现
 - **🟩 立体 bevel 按钮**：`suggested`/`destructive` 自带高光立体面，默认按钮黑白反色 hover
 - **♿ 无障碍优先 ♿**：对话框/弹层焦点陷阱与 Escape 关闭（叠加弹层只关栈顶）、Tab 键盘导航、菜单方向键/Home/End 导航、Switch/菜单可访问名称、Toast `role="status"` 播报、jsx-a11y lint 规则集、`prefers-reduced-motion` 全量降级
 - **🌍 内置文案字典**：全组件的可访问名称与提示文案（关闭、后退、新建标签页、展开/折叠等）统一收敛到 `ThemeProvider` 的 `labels` 字典，支持子集覆盖完成本地化，组件级 prop 可再精修；`accentColor` 一键注入品牌色
-- **🎛️ 受控 / 非受控双模式**：Switch、CheckButton、Scale、SpinButton、TabBar、ExpanderRow、SpinRow、ComboRow 等均提供 `defaultChecked` / `defaultValue` / `defaultActiveTabId` 等初始值用法，`closeIcon` / `backIcon` / `actions` 等支持图标与操作区自定义
+- **🎛️ 受控 / 非受控双模式**：Switch、CheckButton、Scale、SpinButton、Entry、TextArea、DropDown、ListBox、Calendar、DatePicker、ColorPicker、Expander、Paned、TabBar、ExpanderRow、SpinRow、ComboRow 等均提供 `defaultChecked` / `defaultValue` / `defaultExpanded` / `defaultPosition` 等初始值用法，`closeIcon` / `backIcon` / `actions` 等支持图标与操作区自定义
 - **🪟 弹层 portal 化**：Dialog / BottomSheet / PreferencesDialog / Tab overview / Popover 均挂载到 `document.body`，不受 `overflow` / `transform` 祖先裁剪；Popover 按锚点实时定位并自动视口翻转与夹紧
 - **📦 Rollup 4 双格式产物**：ESM 按模块输出（真正 tree-shaking）+ 单文件 CJS；样式提取为静态 `dist/oredwaita.css`；全量 sourcemap（`.map` 随包发布）
-- **🧪 Vitest 5 + Testing Library**：380 条单测，a11y 断言以可访问名称与键盘交互为主
+- **🧪 Vitest 5 + Testing Library**：539 条单测，a11y 断言以可访问名称与键盘交互为主
 - **📚 Storybook 10** 交互文档
 - **🔒 token 守卫**：`check-tokens` 禁止组件 SCSS 出现裸色值（hex/rgba/具名色），`contrast-audit` 直接解析 SCSS token 做 WCAG 对比度审计并纳入 `yarn lint` 门禁
 
@@ -43,6 +43,14 @@ export const App = () => (
 ```
 
 **样式导入是必需的**：样式以静态 CSS 文件（`oredwaita/styles.css`）交付，不随 JS 运行时注入——SSR 首屏、CSS 缓存与按需打包都因此受益，不要漏掉这一行 import。
+
+## 🧩 组件总览
+
+- **窗口与导航**：Window / ApplicationWindow / HeaderBar / ToolbarView / Leaflet / Flap / NavigationView / NavigationSplitView / OverlaySplitView / ViewSwitcher / TabView / TabBar / TabOverview / Sidebar / BottomSheet / BreakpointBin
+- **对话框与弹层**：Dialog / AlertDialog / MessageDialog / AboutDialog / ShortcutsDialog / PreferencesDialog / Popover / PopoverMenu / MenuButton / Tooltip
+- **表单控件**：Button / SplitButton / ToggleButton / ToggleGroup / CheckButton / RadioButton / Switch / Scale / SpinButton / Entry / TextArea / SearchEntry / SearchBar / DropDown / DatePicker / ColorPicker，以及 ActionRow / EntryRow / ComboRow / SwitchRow / SpinRow / PasswordEntryRow / ExpanderRow / LinkRow / ButtonRow / ShortcutRow 等 HIG 行控件
+- **数据展示**：Card（CardHeader / CardBody / CardFooter）/ ColumnView / ListBox / Calendar / Carousel / Image / Avatar / Badge / ProgressBar / LevelBar / Separator / StatusPage
+- **反馈与布局**：Banner / Toast / Spinner / Expander / Paned / Bin / Clamp / Squeezer / WrapBox / PreferencesGroup / PreferencesPage / PreferencesWindow
 
 ## 🎨 设计 Token（`src/styles/oredwaita.scss`）
 
@@ -124,6 +132,9 @@ export const App = () => (
 <ExpanderRow title="高级选项" defaultExpanded />            // 初始展开
 <SpinRow title="端口" defaultValue={8080} />                // 数值行初始值
 <Scale defaultValue={40} showValue />                       // 滑杆初始值
+<Entry defaultValue="ore" />                                // 单行输入初始值
+<DropDown items={items} defaultValue="display" />           // 下拉初始选中
+<DatePicker defaultValue={new Date()} />                    // 日期初始值
 ```
 
 需要精确接管时改传 `checked` / `activeTabId` / `value` 即回到受控模式，两种用法可以按页面粒度自由混用。
@@ -151,10 +162,10 @@ yarn test:unit      # 单测
 
 ```
 src/
-├── components/       # 29 个组件模块（BEM: ore-*）
+├── components/       # 42 个组件模块（BEM: ore-*）
 │   ├── Button/       # bevel / 反色 hover 主签名
 │   ├── HeaderBar/    # 48px 窗口 chrome + hero 形态
-│   ├── Rows/         # ActionRow / EntryRow 等 HIG 行控件
+│   ├── Rows/         # ActionRow / EntryRow 等
 │   ├── Leaflet/ …    # Leaflet / Flap / Clamp 等布局原语
 │   └── Oredwaita.stories.tsx  # 全景演示（light/dark 切换）
 ├── styles/

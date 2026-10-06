@@ -1,0 +1,98 @@
+.ore-column-view {
+  width: 100%;
+  overflow: auto;
+  border: 1px solid var(--ore-border-color);
+  border-radius: var(--ore-border-radius-md);
+  background-color: var(--ore-card-bg-color);
+  color: var(--ore-window-fg-color);
+}
+
+.ore-column-view__table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.ore-column-view__header-cell {
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--ore-border-color);
+  background-color: var(--ore-card-bg-color);
+  text-align: start;
+  font-weight: 700;
+}
+
+.ore-column-view__header-cell--center {
+  text-align: center;
+}
+
+.ore-column-view__header-cell--end {
+  text-align: end;
+}
+
+.ore-column-view__sort-button {
+  display: inline-flex;
+  gap: 4px;
+  align-items: center;
+  padding: 0;
+  border: none;
+  background: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+.ore-column-view__sort-button--active {
+  color: var(--ore-accent-color);
+}
+
+.ore-column-view__sort-button:focus-visible {
+  outline: 2px solid var(--ore-accent-color);
+  outline-offset: -2px;
+}
+
+.ore-column-view__sort-icon {
+  flex-shrink: 0;
+}
+
+.ore-column-view__row {
+  transition: background-color var(--ore-transition-duration) var(--ore-ease-out-cubic);
+}
+
+.ore-column-view__row--selectable {
+  cursor: pointer;
+}
+
+.ore-column-view__row--selectable:focus-visible {
+  outline: 2px solid var(--ore-accent-color);
+  outline-offset: -2px;
+}
+
+.ore-column-view__row--selectable:hover:not(.ore-column-view__row--selected) {
+  background-color: var(--ore-fill-hover);
+}
+
+.ore-column-view__row--selected {
+  background-color: var(--ore-fill-selected);
+  color: var(--ore-accent-color);
+}
+
+.ore-column-view__row--selected:hover {
+  background-color: var(--ore-fill-active);
+}
+
+.ore-column-view__cell {
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--ore-border-color);
+  text-align: start;
+}
+
+.ore-column-view__cell--center {
+  text-align: center;
+}
+
+.ore-column-view__cell--end {
+  text-align: end;
+}
+
+.ore-column-view__row:last-child .ore-column-view__cell {
+  border-bottom: none;
+}

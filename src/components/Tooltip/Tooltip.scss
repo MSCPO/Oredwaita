@@ -1,0 +1,50 @@
+.ore-tooltip {
+  display: inline-flex;
+  max-width: 100%;
+
+  &__popup {
+    /* Positioning (fixed top/left) comes inline from useAnchoredPosition. */
+    position: fixed;
+    z-index: 510;
+    max-width: 320px;
+    padding: 4px 10px;
+    border: 1px solid var(--ore-border-color);
+    border-radius: var(--ore-border-radius-sm);
+    background-color: var(--ore-dialog-bg-color);
+    color: var(--ore-dialog-fg-color);
+    box-shadow: var(--ore-shadow-md);
+    font-family: var(--ore-font-sans);
+    font-size: 12px;
+    line-height: 1.45;
+    pointer-events: none;
+    animation: ore-tooltip-in 120ms var(--ore-ease-out-cubic);
+  }
+
+  &__popup--top {
+    transform-origin: bottom center;
+  }
+
+  &__popup--bottom {
+    transform-origin: top center;
+  }
+
+  &__popup--left {
+    transform-origin: right center;
+  }
+
+  &__popup--right {
+    transform-origin: left center;
+  }
+}
+
+@keyframes ore-tooltip-in {
+  from {
+    opacity: 0;
+    transform: translateY(2px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

@@ -1,0 +1,25 @@
+.ore-image {
+  display: block;
+  max-width: 100%;
+  object-fit: contain;
+
+  &--fit-contain {
+    object-fit: contain;
+  }
+
+  &--fit-cover {
+    object-fit: cover;
+  }
+
+  &--fit-fill {
+    object-fit: fill;
+  }
+
+  &--fit-scale-down {
+    object-fit: scale-down;
+  }
+
+  &--rounded {
+    border-radius: var(--ore-border-radius-lg);
+  }
+}

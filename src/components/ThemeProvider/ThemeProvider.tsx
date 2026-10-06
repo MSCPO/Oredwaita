@@ -32,14 +32,24 @@ export interface OreLabels {
   searchPreferences: string;
   searchPlaceholder: string;
   clearSearch: string;
+  noResults: string;
   loading: string;
   moreOptions: string;
   expandRow: string;
   collapseRow: string;
+  expand: string;
+  collapse: string;
   showPassword: string;
   hidePassword: string;
   decrease: string;
   increase: string;
+  resize: string;
+  previousMonth: string;
+  nextMonth: string;
+  today: string;
+  pickDate: string;
+  customColor: string;
+  opacity: string;
   goToSlide: (index: number) => string;
 }
 
@@ -64,14 +74,24 @@ export const ORE_DEFAULT_LABELS: OreLabels = {
   searchPreferences: 'Search preferences...',
   searchPlaceholder: 'Search...',
   clearSearch: 'Clear search',
+  noResults: 'No results found',
   loading: 'Loading',
   moreOptions: 'More options',
   expandRow: 'Expand row',
   collapseRow: 'Collapse row',
+  expand: 'Expand',
+  collapse: 'Collapse',
   showPassword: 'Show password',
   hidePassword: 'Hide password',
   decrease: 'Decrease',
   increase: 'Increase',
+  resize: 'Resize',
+  previousMonth: 'Previous month',
+  nextMonth: 'Next month',
+  today: 'Today',
+  pickDate: 'Pick a date',
+  customColor: 'Custom color',
+  opacity: 'Opacity',
   goToSlide: (index) => `Go to slide ${index}`,
 };
 

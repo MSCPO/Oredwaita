@@ -1,7 +1,7 @@
 {
   "name": "oredwaita",
-  "version": "1.0.0",
-  "description": "OreDwaita — a React component library following the GNOME HIG design language. Bundled with Rollup, documented with Storybook.",
+  "version": "1.0.1",
+  "description": "oredwaita",
   "author": "CyanTea",
   "license": "MIT",
   "repository": {
