@@ -1,0 +1,78 @@
+.ore-leaflet {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+
+  /* Unfolded mode: side-by-side */
+  &--unfolded {
+    flex-direction: row;
+
+    .ore-leaflet-page {
+      flex: 1 1 0%;
+
+      &:not(:last-child) {
+        border-right: 1px solid var(--ore-border-color);
+      }
+    }
+  }
+
+  /* Folded mode: stack view showing active visible child */
+  &--folded {
+    flex-direction: column;
+
+    .ore-leaflet-page {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      pointer-events: none;
+      transition:
+        transform var(--ore-transition-duration) var(--ore-ease-out-cubic),
+        opacity var(--ore-transition-duration) var(--ore-ease-out-cubic);
+
+      &--visible {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translate(0, 0);
+        z-index: 1;
+      }
+
+      &--hidden-left {
+        transform: translateX(-100%);
+      }
+
+      &--hidden-right {
+        transform: translateX(100%);
+      }
+    }
+
+    &.ore-leaflet--transition-crossfade {
+      .ore-leaflet-page {
+        transform: none !important;
+      }
+    }
+
+    &.ore-leaflet--transition-over {
+      .ore-leaflet-page--visible {
+        z-index: 2;
+      }
+    }
+  }
+}
+
+.ore-leaflet-page {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+
+  &__content {
+    flex: 1 1 auto;
+    overflow-y: auto;
+  }
+}

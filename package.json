@@ -1,0 +1,124 @@
+{
+  "name": "oredwaita",
+  "version": "1.0.0",
+  "description": "OreDwaita — a React component library following the GNOME HIG design language. Bundled with Rollup, documented with Storybook.",
+  "author": "CyanTea",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MSCPO/Oredwaita.git"
+  },
+  "homepage": "https://github.com/MSCPO/Oredwaita",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/src/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/src/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./styles.css": "./dist/oredwaita.css"
+  },
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "start": "NODE_ENV=development BABEL_ENV=development yarn storybook",
+    "build": "rimraf dist && NODE_ENV=production BABEL_ENV=production rollup -c",
+    "lint": "yarn check-types && yarn eslint && yarn stylelint && yarn check:tokens && yarn check:contrast",
+    "lint:fix": "yarn eslint:fix && yarn stylelint:fix",
+    "check:tokens": "node scripts/check-tokens.mjs",
+    "check:contrast": "node scripts/contrast-audit.mjs",
+    "eslint": "eslint . --report-unused-disable-directives --max-warnings 0",
+    "eslint:fix": "eslint . --fix",
+    "stylelint": "stylelint \"**/*.{css,scss,sass}\"",
+    "stylelint:fix": "stylelint \"**/*.{css,scss,sass}\" --fix",
+    "check-types": "tsc --noEmit",
+    "ci": "yarn lint && yarn test:unit --watch=false",
+    "test": "vitest --config ./vitest.config.ts",
+    "test:unit": "vitest --config ./vitest.config.ts --project unit",
+    "test:storybook": "vitest --config ./vitest.config.ts --project storybook",
+    "release": "yarn ci && yarn build && npm publish",
+    "storybook": "storybook dev -p 6006",
+    "storybook:build": "storybook build"
+  },
+  "peerDependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "dependencies": {
+    "clsx": "^2.1.1",
+    "lucide-react": "^1.31.0"
+  },
+  "devDependencies": {
+    "@chromatic-com/storybook": "^5.0.0",
+    "@eslint/js": "^10.0.1",
+    "@rollup/plugin-commonjs": "^29.0.0",
+    "@rollup/plugin-node-resolve": "^16.0.3",
+    "@rollup/plugin-typescript": "^12.3.0",
+    "@rollup/plugin-url": "^8.0.2",
+    "@storybook/addon-a11y": "^10.6.1",
+    "@storybook/addon-docs": "^10.6.1",
+    "@storybook/addon-links": "^10.6.1",
+    "@storybook/addon-onboarding": "^10.6.1",
+    "@storybook/addon-vitest": "^10.6.1",
+    "@storybook/react-vite": "^10.6.1",
+    "@svgr/rollup": "^8.1.0",
+    "@testing-library/dom": "^10.4.1",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.1",
+    "@testing-library/user-event": "^14.6.1",
+    "@types/node": "^25.0.9",
+    "@types/react": "^19.2.8",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.1.2",
+    "@vitest/browser-playwright": "^5.0.3",
+    "@vitest/coverage-v8": "^5.0.3",
+    "autoprefixer": "^10.4.23",
+    "eslint": "^10.12.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-import-x": "^4.17.1",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "eslint-plugin-prettier": "^5.5.6",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "eslint-plugin-react-refresh": "^0.5.7",
+    "eslint-plugin-storybook": "^10.6.1",
+    "globals": "^17.13.0",
+    "jsdom": "^27.4.0",
+    "playwright": "^1.57.0",
+    "postcss": "^8.5.29",
+    "postcss-scss": "^4.0.9",
+    "prettier": "3.8.0",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
+    "rimraf": "^6.1.2",
+    "rollup": "^4.64.0",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "rollup-plugin-styles": "^4.0.0",
+    "sass": "^1.97.2",
+    "storybook": "^10.6.1",
+    "stylelint": "^17.0.0",
+    "stylelint-prettier": "^5.0.3",
+    "stylelint-scss": "^7.0.0",
+    "tslib": "^2.8.1",
+    "typescript": "5.9.3",
+    "typescript-eslint": "^8.71.1",
+    "vite": "^8.3.2",
+    "vite-plugin-svgr": "^5.2.0",
+    "vitest": "^5.0.3"
+  },
+  "resolutions": {
+    "svgo": "^3.3.5",
+    "postcss-selector-parser": "^7.1.6"
+  },
+  "packageManager": "yarn@4.12.0"
+}

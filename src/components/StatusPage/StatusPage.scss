@@ -1,0 +1,57 @@
+.ore-status-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 48px 24px;
+  max-width: 480px;
+  margin: 0 auto;
+  font-family: var(--ore-font-sans);
+
+  &__icon {
+    font-size: 64px;
+    margin-bottom: 16px;
+    color: var(--ore-accent-color);
+  }
+
+  &__title {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0 0 8px;
+  }
+
+  &__description {
+    font-size: 14px;
+    opacity: 0.7;
+    line-height: 1.5;
+    margin: 0 0 24px;
+  }
+
+  &__child {
+    display: flex;
+    justify-content: center;
+  }
+
+  /* Brand moment: hero gradient */
+  &--hero {
+    background: var(--ore-gradient);
+    color: var(--ore-white);
+    border-radius: var(--ore-border-radius-xl);
+
+    .ore-status-page__icon {
+      color: var(--ore-accent-hover);
+    }
+
+    .ore-status-page__title {
+      font-family: var(--ore-font-display);
+      font-weight: 400;
+      letter-spacing: 0.02em;
+    }
+
+    .ore-status-page__description {
+      color: var(--ore-white);
+      opacity: 0.8;
+    }
+  }
+}

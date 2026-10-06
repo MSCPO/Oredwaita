@@ -1,0 +1,201 @@
+.ore-dialog-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: var(--ore-scrim);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: ore-fade-in 0.2s ease;
+}
+
+.ore-dialog {
+  background-color: var(--ore-dialog-bg-color);
+  color: var(--ore-dialog-fg-color);
+  border-radius: var(--ore-border-radius-xl);
+  box-shadow: var(--ore-shadow-hard);
+  width: 90vw;
+  max-width: 500px;
+  max-height: 85vh;
+  overflow: hidden;
+  font-family: var(--ore-font-sans);
+  animation: ore-pop-in 0.25s var(--ore-ease-out-cubic);
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--ore-border-color);
+  }
+
+  &__title {
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  &__body {
+    padding: 20px;
+    overflow-y: auto;
+  }
+}
+
+.ore-message-dialog {
+  text-align: center;
+  max-width: 400px;
+
+  &__content {
+    padding: 24px;
+  }
+
+  &__heading {
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0 0 8px;
+  }
+
+  &__body {
+    font-size: 13px;
+    opacity: 0.8;
+    line-height: 1.4;
+  }
+
+  &__actions {
+    display: flex;
+    border-top: 1px solid var(--ore-border-color);
+  }
+
+  &__action-btn {
+    flex: 1 1 0%;
+    border-radius: 0 !important;
+    padding: 12px 0 !important;
+
+    &:not(:last-child) {
+      border-right: 1px solid var(--ore-border-color);
+    }
+  }
+}
+
+.ore-about-dialog {
+  text-align: center;
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+
+  &__name {
+    font-size: 22px;
+    font-weight: 700;
+    margin: 12px 0 2px;
+  }
+
+  &__version {
+    font-size: 12px;
+    opacity: 0.6;
+    font-weight: 600;
+  }
+
+  &__details {
+    font-size: 13px;
+    opacity: 0.8;
+    line-height: 1.5;
+  }
+
+  &__link {
+    color: var(--ore-accent-color);
+    text-decoration: none;
+    font-weight: 600;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.ore-shortcuts-dialog {
+  max-width: 600px;
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 20px;
+  }
+
+  &__sec-title {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    opacity: 0.6;
+    margin: 0 0 10px;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 6px 0;
+    font-size: 13px;
+  }
+
+  &__kbd {
+    background-color: var(--ore-fill-selected);
+    border: 1px solid var(--ore-border-color);
+    border-radius: 4px;
+    padding: 2px 6px;
+    font-family: var(--ore-font-mono);
+    font-size: 11px;
+    font-weight: 700;
+  }
+}
+
+@keyframes ore-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes ore-fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes ore-pop-in {
+  from {
+    transform: scale(0.92);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes ore-pop-out {
+  from {
+    transform: scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: scale(0.92);
+    opacity: 0;
+  }
+}
+
+.ore-dialog-overlay--closing {
+  animation: ore-fade-out 0.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+.ore-dialog--closing {
+  animation: ore-pop-out 0.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}

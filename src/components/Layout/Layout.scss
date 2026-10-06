@@ -1,0 +1,26 @@
+.ore-clamp {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.ore-squeezer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.ore-wrap-box {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+
+  &--homogeneous > * {
+    flex: 1 1 0%;
+  }
+}
+
+.ore-bin {
+  display: block;
+}

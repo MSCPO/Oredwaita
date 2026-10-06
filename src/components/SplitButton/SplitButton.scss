@@ -1,0 +1,19 @@
+.ore-split-button {
+  display: inline-flex;
+  align-items: center;
+  border-radius: var(--ore-border-radius-md);
+  overflow: hidden;
+
+  &__main {
+    border-top-right-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+    border-right: 1px solid var(--ore-black-a10) !important;
+  }
+
+  &__dropdown {
+    border-top-left-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+  }
+}

@@ -1,0 +1,60 @@
+.ore-header-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 48px;
+  padding: 0 12px;
+  background-color: var(--ore-headerbar-bg-color);
+  color: var(--ore-headerbar-fg-color);
+  border-bottom: 1px solid var(--ore-headerbar-border-color);
+  user-select: none;
+  font-family: var(--ore-font-sans);
+
+  &--flat {
+    border-bottom: none;
+    background-color: transparent;
+  }
+
+  /* Brand moment: hero gradient chrome */
+  &--hero {
+    background: var(--ore-gradient);
+    color: var(--ore-white);
+    border-bottom-color: transparent;
+  }
+
+  &__start,
+  &__end {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    min-width: 120px;
+  }
+
+  &__end {
+    justify-content: flex-end;
+  }
+
+  &__center {
+    flex: 1 1 0%;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.ore-window-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__title {
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  &__subtitle {
+    font-size: 11px;
+    opacity: 0.6;
+    margin-top: 1px;
+  }
+}

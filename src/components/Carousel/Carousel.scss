@@ -1,0 +1,62 @@
+.ore-carousel {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+
+  &__track {
+    display: flex;
+    width: 100%;
+    transition: transform var(--ore-transition-duration) var(--ore-ease-out-cubic);
+  }
+
+  &__slide {
+    flex: 0 0 100%;
+    width: 100%;
+  }
+}
+
+.ore-carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 12px;
+
+  &__dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    border: none;
+    background-color: var(--ore-fill-selected);
+    padding: 0;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &--active {
+      background-color: var(--ore-accent-bg-color);
+      transform: scale(1.25);
+    }
+  }
+}
+
+.ore-carousel-lines {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 12px;
+
+  &__line {
+    width: 20px;
+    height: 4px;
+    border-radius: 2px;
+    border: none;
+    background-color: var(--ore-fill-selected);
+    padding: 0;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &--active {
+      background-color: var(--ore-accent-bg-color);
+      width: 32px;
+    }
+  }
+}

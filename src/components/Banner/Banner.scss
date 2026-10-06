@@ -1,0 +1,27 @@
+.ore-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 16px;
+  background-color: var(--ore-fill-selected);
+  border-bottom: 1px solid var(--ore-border-color);
+  font-family: var(--ore-font-sans);
+  font-size: 13px;
+  font-weight: 600;
+
+  &__icon {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  &__title {
+    flex: 1 1 0%;
+  }
+
+  /* Brand moment: hero gradient */
+  &--gradient {
+    background: var(--ore-gradient);
+    color: var(--ore-white);
+    border-bottom-color: transparent;
+  }
+}

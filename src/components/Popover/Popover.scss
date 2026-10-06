@@ -1,0 +1,128 @@
+.ore-popover {
+  /* Positioning (fixed top/left) comes inline from useAnchoredPosition. */
+  position: fixed;
+  background-color: var(--ore-dialog-bg-color);
+  color: var(--ore-dialog-fg-color);
+  border-radius: var(--ore-border-radius-md);
+  box-shadow: var(--ore-shadow-hard-sm);
+  border: 1px solid var(--ore-border-color);
+  padding: 6px;
+  z-index: 500;
+  min-width: 180px;
+  transform-origin: top center;
+  animation: ore-popover-in 0.18s var(--ore-ease-out-cubic);
+  font-family: var(--ore-font-sans);
+
+  &--closing {
+    animation: ore-popover-out 0.18s var(--ore-ease-out-cubic) forwards;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+}
+
+.ore-popover-menu-section {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+
+  &:not(:last-child) {
+    border-bottom: 1px solid var(--ore-border-color);
+    padding-bottom: 4px;
+    margin-bottom: 4px;
+  }
+
+  &__title {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    opacity: 0.5;
+    padding: 4px 10px;
+  }
+
+  &__items {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+}
+
+.ore-popover-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 12px;
+  border-radius: var(--ore-border-radius-sm);
+  border: none;
+  background: transparent;
+  font-size: 13px;
+  font-weight: 500;
+  color: inherit;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  transition: background-color 120ms ease;
+
+  &:hover:not(:disabled) {
+    background-color: var(--ore-fill-hover);
+  }
+
+  &--destructive {
+    color: var(--ore-destructive-color);
+
+    &:hover:not(:disabled) {
+      background-color: var(--ore-destructive-tint);
+    }
+  }
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+
+  &__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+  }
+
+  &__label {
+    flex: 1 1 auto;
+  }
+
+  &__shortcut {
+    font-size: 10px;
+    opacity: 0.5;
+    font-family: var(--ore-font-mono);
+  }
+}
+
+.ore-menu-button__icon {
+  margin-inline-end: 6px;
+}
+
+@keyframes ore-popover-in {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes ore-popover-out {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+}

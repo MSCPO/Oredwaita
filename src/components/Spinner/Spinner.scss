@@ -1,0 +1,13 @@
+.ore-spinner {
+  display: inline-block;
+  border: 2px solid var(--ore-fill-selected);
+  border-top-color: var(--ore-accent-bg-color);
+  border-radius: 50%;
+  animation: ore-spinner-rotate 0.75s linear infinite;
+}
+
+@keyframes ore-spinner-rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}

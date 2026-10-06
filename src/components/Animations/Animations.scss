@@ -1,0 +1,82 @@
+.ore-animated-transition {
+  transition-property: transform, opacity, max-height, max-width;
+  transition-duration: var(--ore-animation-duration);
+  transition-timing-function: var(--ore-ease-out-cubic);
+  will-change: transform, opacity;
+
+  &--fade {
+    &--hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+  }
+
+  &--slide-up {
+    &--hidden {
+      opacity: 0;
+      transform: translateY(20px);
+      pointer-events: none;
+    }
+  }
+
+  &--slide-down {
+    &--hidden {
+      opacity: 0;
+      transform: translateY(-20px);
+      pointer-events: none;
+    }
+  }
+
+  &--slide-left {
+    &--hidden {
+      opacity: 0;
+      transform: translateX(20px);
+      pointer-events: none;
+    }
+  }
+
+  &--slide-right {
+    &--hidden {
+      opacity: 0;
+      transform: translateX(-20px);
+      pointer-events: none;
+    }
+  }
+
+  &--scale {
+    &--hidden {
+      opacity: 0;
+      transform: scale(0.92);
+      pointer-events: none;
+    }
+  }
+}
+
+/* Stagger — list entrance, 50ms increments.
+ * Add .ore-stagger to any container; direct children animate in sequence.
+ * Step size is overridable via --ore-stagger-step. */
+.ore-stagger > * {
+  animation: ore-stagger-in var(--ore-animation-duration) var(--ore-ease-out-cubic) both;
+}
+
+@for $i from 1 through 12 {
+  .ore-stagger > :nth-child(#{$i}) {
+    animation-delay: calc(var(--ore-stagger-step, 50ms) * #{$i - 1});
+  }
+}
+
+.ore-stagger > :nth-child(n + 13) {
+  animation-delay: calc(var(--ore-stagger-step, 50ms) * 12);
+}
+
+@keyframes ore-stagger-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

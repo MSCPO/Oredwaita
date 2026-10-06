@@ -1,0 +1,19 @@
+.ore-breakpoint-bin {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+
+  &--small {
+    --ore-active-breakpoint: 'small';
+  }
+
+  &--medium {
+    --ore-active-breakpoint: 'medium';
+  }
+
+  &--large {
+    --ore-active-breakpoint: 'large';
+  }
+}

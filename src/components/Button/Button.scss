@@ -1,0 +1,144 @@
+.ore-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 6px 14px;
+  font-family: var(--ore-font-sans);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.4;
+  border-radius: var(--ore-border-radius-md);
+  border: 2px solid var(--ore-border-strong);
+  background-color: var(--ore-view-bg-color);
+  color: var(--ore-window-fg-color);
+  cursor: pointer;
+  user-select: none;
+  transition: all var(--ore-transition-duration) var(--ore-ease-out-cubic);
+
+  &:hover:not(:disabled) {
+    background-color: var(--ore-border-strong);
+    color: var(--ore-view-bg-color);
+  }
+
+  &:active:not(:disabled) {
+    transform: scale(0.98);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--ore-accent-bg-color);
+    outline-offset: 2px;
+  }
+
+  /* Variants — bevel buttons (raised face) */
+  &--suggested {
+    background-color: var(--ore-accent-bg-color);
+    color: var(--ore-accent-fg-color);
+
+    &:hover:not(:disabled) {
+      background-color: var(--ore-accent-hover);
+      color: var(--ore-accent-fg-color);
+    }
+
+    /* Bevel highlight reads wrong on pill/circular faces — plain fill there */
+    &:not(.ore-button--pill):not(.ore-button--circular) {
+      box-shadow: inset 0 3px 0 var(--ore-white-a30);
+      text-shadow: 0 2px 0 var(--ore-black-a20);
+
+      &:active:not(:disabled) {
+        box-shadow: inset 0 -3px 0 var(--ore-black-a25);
+        text-shadow: none;
+      }
+    }
+  }
+
+  &--destructive {
+    background-color: var(--ore-destructive-bg-color);
+    color: var(--ore-destructive-fg-color);
+
+    &:hover:not(:disabled) {
+      background-color: var(--ore-red-bright);
+      color: var(--ore-destructive-fg-color);
+    }
+
+    &:not(.ore-button--pill):not(.ore-button--circular) {
+      box-shadow: inset 0 3px 0 var(--ore-white-a30);
+      text-shadow: 0 2px 0 var(--ore-black-a20);
+
+      &:active:not(:disabled) {
+        box-shadow: inset 0 -3px 0 var(--ore-black-a25);
+        text-shadow: none;
+      }
+    }
+  }
+
+  &--flat {
+    background-color: transparent;
+    border-color: transparent;
+
+    &:hover:not(:disabled) {
+      background-color: var(--ore-fill-hover);
+      color: inherit;
+    }
+  }
+
+  /* Shapes */
+  &--pill {
+    border-radius: var(--ore-border-radius-pill);
+  }
+
+  &--circular {
+    border-radius: 50%;
+    padding: 8px;
+    width: 36px;
+    height: 36px;
+  }
+
+  /* Sizes */
+  &--sm {
+    padding: 4px 10px;
+    font-size: 12px;
+    border-radius: var(--ore-border-radius-sm);
+  }
+
+  &--lg {
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: var(--ore-border-radius-lg);
+  }
+
+  &__spinner {
+    width: 14px;
+    height: 14px;
+    border: 2px solid currentColor;
+    border-right-color: transparent;
+    border-radius: 50%;
+    animation: ore-spin 0.75s linear infinite;
+  }
+}
+
+.ore-button-content {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+
+  &__badge {
+    background-color: var(--ore-accent-bg-color);
+    color: var(--ore-white);
+    font-size: 11px;
+    font-weight: 700;
+    padding: 1px 6px;
+    border-radius: 10px;
+  }
+}
+
+@keyframes ore-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

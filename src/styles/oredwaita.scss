@@ -1,0 +1,320 @@
+/* OreDwaita CSS System
+ * Structure: GNOME HIG (ramp structure, semantic layers, light/dark).
+ * Palette: grass green accent, brand red/yellow, navy chrome,
+ *          Swiss typography, hard offset shadows for transient layers.
+ * Contrast: all fg/bg pairs audited — scripts/contrast-audit.mjs */
+[class^='ore-'],
+[class*=' ore-'] {
+  box-sizing: border-box;
+}
+
+:root {
+  /* Brand primitives (theme-invariant) */
+  --ore-white: #ffffff;
+  --ore-black: #111111;
+
+  /* Palette Colors — ramps 1 (light) → 5 (dark), anchor at 3 */
+  --ore-green-1: #d2eccc;
+  --ore-green-2: #8cc97c;
+  --ore-green-3: #3c8527; /* accent fill */
+  --ore-green-4: #35751f;
+  --ore-green-5: #2f6b1e;
+
+  --ore-mint-1: #d3f5e3;
+  --ore-mint-2: #7ee2b0;
+  --ore-mint-3: #2ec27e;
+  --ore-mint-4: #26a269;
+  --ore-mint-5: #1e8756;
+
+  --ore-yellow-1: #f9f6c8;
+  --ore-yellow-2: #e9e45e;
+  --ore-yellow-3: #d2d300; /* warning yellow */
+  --ore-yellow-4: #b8b800;
+  --ore-yellow-5: #9a9a00;
+
+  --ore-red-1: #f8d3da;
+  --ore-red-2: #f27a92;
+  --ore-red-3: #d10133; /* brand accent red */
+  --ore-red-4: #b8012c;
+  --ore-red-5: #960124;
+
+  --ore-navy-1: #dbe2ea;
+  --ore-navy-2: #5a7186;
+  --ore-navy-3: #1e2a38; /* dark chrome / gradient end */
+  --ore-navy-4: #16202b;
+  --ore-navy-5: #0e141c;
+
+  --ore-purple-1: #dc8add;
+  --ore-purple-2: #c061cb;
+  --ore-purple-3: #9141ac;
+  --ore-purple-4: #813d9c;
+  --ore-purple-5: #613583;
+
+  --ore-brown-1: #cdab8f;
+  --ore-brown-2: #b5835a;
+  --ore-brown-3: #986a44;
+  --ore-brown-4: #865e3c;
+  --ore-brown-5: #63452c;
+
+  --ore-orange-1: #ffbe6f;
+  --ore-orange-2: #ffa348;
+  --ore-orange-3: #ff7800;
+  --ore-orange-4: #e66100;
+  --ore-orange-5: #c64600;
+
+  --ore-light-1: #ffffff;
+  --ore-light-2: #f8f9fa;
+  --ore-light-3: #f0f1f2;
+  --ore-light-4: #d8dadd;
+  --ore-light-5: #9a9ea3;
+
+  --ore-dark-1: #5c6370;
+  --ore-dark-2: #383c4a;
+  --ore-dark-3: #2a3040;
+  --ore-dark-4: #1a1e2c;
+  --ore-dark-5: #0c0e16;
+
+  /* Brand signature values */
+  --ore-accent-hover: #489e31; /* --ore-green-bg hover */
+  --ore-red-bright: #e60039; /* --hero-red */
+  --ore-red-bright-2: #ff4d6d; /* shimmer gradient end; destructive text on dark */
+  --ore-gradient: linear-gradient(135deg, #050505 0%, #1e2a38 100%);
+
+  /* Dimensions & Metrics */
+  --ore-border-radius-sm: 6px;
+  --ore-border-radius-md: 9px;
+  --ore-border-radius-lg: 12px;
+  --ore-border-radius-xl: 16px;
+  --ore-border-radius-pill: 9999px;
+  --ore-top-bars-height: 0;
+  --ore-bottom-bars-height: 0;
+
+  /* Layout widths */
+  --ore-width-small: 400px;
+  --ore-width-medium: 600px;
+  --ore-width-large: 1000px;
+
+  /* Typography */
+  --ore-font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --ore-font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --ore-font-display: 'ZCOOL XiaoWei', 'Noto Serif SC', serif;
+
+  /* Motion — Swiss signature easing */
+  --ore-ease-out-cubic: cubic-bezier(0.16, 1, 0.3, 1);
+  --ore-ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --ore-transition-duration: 200ms;
+  --ore-animation-duration: 200ms; /* per-instance override hook (AnimatedTransition) */
+  --ore-stagger-step: 50ms; /* Stagger increment, override per container */
+}
+
+/* Light Theme Variables */
+:root,
+.ore-theme-light {
+  --ore-accent-bg-color: var(--ore-green-3);
+  --ore-accent-fg-color: var(--ore-white);
+  --ore-accent-color: var(--ore-green-4);
+
+  --ore-destructive-bg-color: var(--ore-red-3);
+  --ore-destructive-fg-color: var(--ore-white);
+  --ore-destructive-color: var(--ore-red-4);
+
+  --ore-success-bg-color: var(--ore-mint-3);
+  --ore-success-fg-color: var(--ore-white);
+  --ore-success-color: var(--ore-mint-5);
+
+  --ore-warning-bg-color: var(--ore-yellow-3);
+  --ore-warning-fg-color: var(--ore-black);
+  --ore-warning-color: var(--ore-yellow-5);
+
+  --ore-error-bg-color: var(--ore-red-3);
+  --ore-error-fg-color: var(--ore-white);
+  --ore-error-color: var(--ore-red-4);
+
+  --ore-window-bg-color: var(--ore-light-2);
+  --ore-window-fg-color: var(--ore-black);
+
+  --ore-view-bg-color: var(--ore-light-1);
+  --ore-view-fg-color: var(--ore-black);
+
+  --ore-headerbar-bg-color: var(--ore-light-1);
+  --ore-headerbar-fg-color: var(--ore-black);
+  --ore-headerbar-border-color: rgba(17, 17, 17, 0.12);
+  --ore-headerbar-backdrop-color: var(--ore-light-2);
+
+  --ore-sidebar-bg-color: var(--ore-light-3);
+  --ore-sidebar-fg-color: var(--ore-black);
+  --ore-sidebar-border-color: rgba(17, 17, 17, 0.08);
+
+  --ore-card-bg-color: var(--ore-light-1);
+  --ore-card-fg-color: var(--ore-black);
+  --ore-card-shade-color: rgba(17, 17, 17, 0.07);
+
+  --ore-dialog-bg-color: var(--ore-light-2);
+  --ore-dialog-fg-color: var(--ore-black);
+
+  --ore-popover-bg-color: var(--ore-light-1);
+  --ore-popover-fg-color: var(--ore-black);
+
+  --ore-fill-hover: rgba(17, 17, 17, 0.06);
+  --ore-fill-active: rgba(17, 17, 17, 0.12);
+  --ore-fill-selected: rgba(17, 17, 17, 0.08);
+
+  --ore-border-color: rgba(17, 17, 17, 0.14);
+  --ore-border-strong: var(--ore-black);
+
+  --ore-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.04);
+  --ore-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.12), 0 1px 3px rgba(0, 0, 0, 0.08);
+  --ore-shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.18), 0 2px 6px rgba(0, 0, 0, 0.08);
+  --ore-shadow-hard: 10px 10px 0 rgba(17, 17, 17, 0.15);
+  --ore-shadow-hard-sm: 4px 4px 0 rgba(17, 17, 17, 0.18);
+
+  /* Translucent ink, scrims, glosses — the only sanctioned raw-alpha colors;
+   * component SCSS must reference these instead of writing rgba() directly. */
+  --ore-black-a8: rgba(0, 0, 0, 0.08);
+  --ore-black-a10: rgba(0, 0, 0, 0.1);
+  --ore-black-a12: rgba(0, 0, 0, 0.12);
+  --ore-black-a15: rgba(0, 0, 0, 0.15);
+  --ore-black-a20: rgba(0, 0, 0, 0.2);
+  --ore-black-a25: rgba(0, 0, 0, 0.25);
+  --ore-black-a30: rgba(0, 0, 0, 0.3);
+  --ore-white-a25: rgba(255, 255, 255, 0.25);
+  --ore-white-a30: rgba(255, 255, 255, 0.3);
+  --ore-white-a45: rgba(255, 255, 255, 0.45);
+  --ore-scrim: rgba(0, 0, 0, 0.4);
+  --ore-destructive-tint: rgba(224, 27, 36, 0.1);
+}
+
+/* Dark Theme Variables — derived from the dark hero scenes
+ * (hero #080a14, canvas #0d0a0f, navy #1e2a38) */
+@media (prefers-color-scheme: dark) {
+  :root:not(.ore-theme-light) {
+    --ore-accent-bg-color: var(--ore-green-3);
+    --ore-accent-fg-color: var(--ore-white);
+    --ore-accent-color: var(--ore-accent-hover);
+
+    --ore-destructive-bg-color: var(--ore-red-3);
+    --ore-destructive-fg-color: var(--ore-white);
+    --ore-destructive-color: var(--ore-red-bright-2);
+
+    --ore-success-bg-color: var(--ore-mint-4);
+    --ore-success-fg-color: var(--ore-white);
+    --ore-success-color: var(--ore-mint-2);
+
+    --ore-warning-bg-color: var(--ore-yellow-3);
+    --ore-warning-fg-color: var(--ore-black);
+    --ore-warning-color: var(--ore-yellow-2);
+
+    --ore-error-bg-color: var(--ore-red-3);
+    --ore-error-fg-color: var(--ore-white);
+    --ore-error-color: var(--ore-red-bright-2);
+
+    --ore-window-bg-color: #10121a;
+    --ore-window-fg-color: #f5f6f8;
+
+    --ore-view-bg-color: var(--ore-dark-5);
+    --ore-view-fg-color: #f5f6f8;
+
+    --ore-headerbar-bg-color: var(--ore-navy-3);
+    --ore-headerbar-fg-color: #f5f6f8;
+    --ore-headerbar-border-color: rgba(255, 255, 255, 0.12);
+    --ore-headerbar-backdrop-color: #10121a;
+
+    --ore-sidebar-bg-color: #161926;
+    --ore-sidebar-fg-color: #f5f6f8;
+    --ore-sidebar-border-color: rgba(255, 255, 255, 0.08);
+
+    --ore-card-bg-color: rgba(255, 255, 255, 0.06);
+    --ore-card-fg-color: #f5f6f8;
+    --ore-card-shade-color: rgba(0, 0, 0, 0.36);
+
+    --ore-dialog-bg-color: #141722;
+    --ore-dialog-fg-color: #f5f6f8;
+
+    --ore-popover-bg-color: #1c2030;
+    --ore-popover-fg-color: #f5f6f8;
+
+    --ore-fill-hover: rgba(255, 255, 255, 0.08);
+    --ore-fill-active: rgba(255, 255, 255, 0.16);
+    --ore-fill-selected: rgba(255, 255, 255, 0.12);
+
+    --ore-border-color: rgba(255, 255, 255, 0.14);
+    --ore-border-strong: rgba(255, 255, 255, 0.9);
+
+    --ore-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.24);
+    --ore-shadow-md: 0 4px 16px rgba(0, 0, 0, 0.36);
+    --ore-shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.48);
+    --ore-shadow-hard: 10px 10px 0 rgba(0, 0, 0, 0.45);
+    --ore-shadow-hard-sm: 4px 4px 0 rgba(0, 0, 0, 0.5);
+  }
+}
+
+.ore-theme-dark {
+  --ore-accent-bg-color: var(--ore-green-3);
+  --ore-accent-fg-color: var(--ore-white);
+  --ore-accent-color: var(--ore-accent-hover);
+
+  --ore-destructive-bg-color: var(--ore-red-3);
+  --ore-destructive-fg-color: var(--ore-white);
+  --ore-destructive-color: var(--ore-red-bright-2);
+
+  --ore-success-bg-color: var(--ore-mint-4);
+  --ore-success-fg-color: var(--ore-white);
+  --ore-success-color: var(--ore-mint-2);
+
+  --ore-warning-bg-color: var(--ore-yellow-3);
+  --ore-warning-fg-color: var(--ore-black);
+  --ore-warning-color: var(--ore-yellow-2);
+
+  --ore-error-bg-color: var(--ore-red-3);
+  --ore-error-fg-color: var(--ore-white);
+  --ore-error-color: var(--ore-red-bright-2);
+
+  --ore-window-bg-color: #10121a;
+  --ore-window-fg-color: #f5f6f8;
+
+  --ore-view-bg-color: var(--ore-dark-5);
+  --ore-view-fg-color: #f5f6f8;
+
+  --ore-headerbar-bg-color: var(--ore-navy-3);
+  --ore-headerbar-fg-color: #f5f6f8;
+  --ore-headerbar-border-color: rgba(255, 255, 255, 0.12);
+  --ore-headerbar-backdrop-color: #10121a;
+
+  --ore-sidebar-bg-color: #161926;
+  --ore-sidebar-fg-color: #f5f6f8;
+  --ore-sidebar-border-color: rgba(255, 255, 255, 0.08);
+
+  --ore-card-bg-color: rgba(255, 255, 255, 0.06);
+  --ore-card-fg-color: #f5f6f8;
+  --ore-card-shade-color: rgba(0, 0, 0, 0.36);
+
+  --ore-dialog-bg-color: #141722;
+  --ore-dialog-fg-color: #f5f6f8;
+
+  --ore-popover-bg-color: #1c2030;
+  --ore-popover-fg-color: #f5f6f8;
+
+  --ore-fill-hover: rgba(255, 255, 255, 0.08);
+  --ore-fill-active: rgba(255, 255, 255, 0.16);
+  --ore-fill-selected: rgba(255, 255, 255, 0.12);
+
+  --ore-border-color: rgba(255, 255, 255, 0.14);
+  --ore-border-strong: rgba(255, 255, 255, 0.9);
+
+  --ore-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.24);
+  --ore-shadow-md: 0 4px 16px rgba(0, 0, 0, 0.36);
+  --ore-shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.48);
+  --ore-shadow-hard: 10px 10px 0 rgba(0, 0, 0, 0.45);
+  --ore-shadow-hard-sm: 4px 4px 0 rgba(0, 0, 0, 0.5);
+}
+
+/* Reduced motion — kill all animation */
+@media (prefers-reduced-motion: reduce) {
+  [class^='ore-'],
+  [class*=' ore-'] {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

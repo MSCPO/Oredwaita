@@ -1,0 +1,58 @@
+.ore-toast-overlay {
+  position: relative;
+  width: 100%;
+  height: 100%;
+
+  &__content {
+    width: 100%;
+    height: 100%;
+  }
+
+  &__container {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    z-index: 1000;
+    pointer-events: none;
+  }
+}
+
+.ore-toast {
+  pointer-events: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 16px;
+  background-color: var(--ore-dark-4);
+  color: var(--ore-white);
+  border-radius: var(--ore-border-radius-pill);
+  box-shadow: var(--ore-shadow-hard-sm);
+  font-family: var(--ore-font-sans);
+  font-size: 13px;
+  font-weight: 600;
+  animation: ore-toast-slide 0.25s var(--ore-ease-out-cubic);
+
+  &__icon {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  &__title {
+    flex: 1 1 0%;
+  }
+}
+
+@keyframes ore-toast-slide {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

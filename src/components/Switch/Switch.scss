@@ -1,0 +1,50 @@
+.ore-switch {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  width: 48px;
+  height: 26px;
+  padding: 2px;
+  border-radius: var(--ore-border-radius-pill);
+  background-color: var(--ore-fill-active);
+  border: 1px solid var(--ore-border-color);
+  cursor: pointer;
+  outline: none;
+  transition: background-color var(--ore-transition-duration) var(--ore-ease-out-cubic);
+
+  &:hover:not(:disabled) {
+    opacity: 0.9;
+  }
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+
+  &--checked {
+    background-color: var(--ore-accent-bg-color);
+  }
+
+  &__slider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: var(--ore-white);
+    box-shadow: 0 2px 4px var(--ore-black-a20);
+    transition: transform var(--ore-transition-duration) var(--ore-ease-out-cubic);
+  }
+
+  &--checked &__slider {
+    transform: translateX(22px);
+  }
+
+  &__icon {
+    font-size: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

@@ -1,0 +1,58 @@
+.ore-bottom-sheet-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: var(--ore-scrim);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  z-index: 1000;
+  animation: ore-fade-in 0.2s ease;
+
+  &--closing {
+    animation: ore-fade-out 0.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+  }
+}
+
+.ore-bottom-sheet {
+  width: 100%;
+  max-width: 600px;
+  max-height: 80vh;
+  background-color: var(--ore-dialog-bg-color);
+  border-top-left-radius: var(--ore-border-radius-xl);
+  border-top-right-radius: var(--ore-border-radius-xl);
+  padding: 12px 20px 24px;
+  box-shadow: var(--ore-shadow-hard);
+  overflow-y: auto;
+  animation: ore-slide-up 0.25s var(--ore-ease-out-cubic);
+
+  &--closing {
+    animation: ore-slide-down 0.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+  }
+
+  &__handle {
+    width: 36px;
+    height: 4px;
+    border-radius: 2px;
+    background-color: var(--ore-fill-selected);
+    margin: 0 auto 16px;
+  }
+}
+
+@keyframes ore-slide-up {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes ore-slide-down {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(100%);
+  }
+}
